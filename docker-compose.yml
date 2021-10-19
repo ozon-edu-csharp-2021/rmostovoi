@@ -1,0 +1,12 @@
+﻿version: 3.8
+services:
+  merchandise-service:
+    build:
+      context: merchandise-service
+      dockerfile: Dockerfile
+    hostname: merchandise-service
+    depends_on:
+      - supply-service
+      - emailing-service
+      - employees-service
+      - stock-api
