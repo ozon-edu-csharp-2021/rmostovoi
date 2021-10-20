@@ -43,8 +43,6 @@ namespace MerchandiseService
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MerchandiseService v1"));
             }
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
