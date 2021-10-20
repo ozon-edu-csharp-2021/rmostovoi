@@ -18,7 +18,6 @@ ProjectSection(SolutionItems) = preProject
 	.editorconfig = .editorconfig
 	Dockerfile = Dockerfile
 	.dockerignore = .dockerignore
-	docker-compose.yml = docker-compose.yml
 EndProjectSection
 EndProject
 Global
