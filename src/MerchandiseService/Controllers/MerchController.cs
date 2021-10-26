@@ -1,6 +1,4 @@
-﻿using System;
-using MerchandiseService.HttpModels;
-using MerchandiseService.HttpModels.Requests;
+﻿using MerchandiseService.HttpModels.Requests;
 using MerchandiseService.HttpModels.Responses;
 using Microsoft.AspNetCore.Mvc;
 

@@ -2,7 +2,6 @@
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using MerchandiseService.Infrastructure.StartupFilters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
@@ -27,10 +26,7 @@ namespace MerchandiseService.Infrastructure.Middlewares
 
         private async Task TryLogRequest(HttpRequest request)
         {
-            if (request.Path.StartsWithSegments("/swagger"))
-            {
-                return;
-            }
+            if (request.Path.StartsWithSegments("/swagger")) return;
             try
             {
                 LogRequestInfo(request);

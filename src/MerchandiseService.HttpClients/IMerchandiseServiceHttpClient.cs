@@ -9,7 +9,7 @@ namespace MerchandiseService.HttpClients
     {
         [Get("/Merch/IssueMerch")]
         Task<IssueMerchResponse> IssueMerch(IssueMerchModel model);
-        
+
         [Get("/Merch/GetMerchInfo")]
         Task<MerchInfoResponse> GetMerchInfo(MerchInfoModel model);
     }

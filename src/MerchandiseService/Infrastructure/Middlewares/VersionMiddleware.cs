@@ -17,7 +17,7 @@ namespace MerchandiseService.Infrastructure.Middlewares
             var version = assemblyName.Version?.ToString() ?? "unknown version";
             return context.Response.WriteAsJsonAsync(new
             {
-                version = version,
+                version,
                 serviceName = assemblyName.Name
             });
         }

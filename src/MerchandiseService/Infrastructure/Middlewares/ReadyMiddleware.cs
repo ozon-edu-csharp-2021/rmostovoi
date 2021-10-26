@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
 namespace MerchandiseService.Infrastructure.Middlewares
@@ -11,6 +10,9 @@ namespace MerchandiseService.Infrastructure.Middlewares
         {
         }
 
-        public Task InvokeAsync(HttpContext context) => context.Response.WriteAsync("OK");
+        public Task InvokeAsync(HttpContext context)
+        {
+            return context.Response.WriteAsync("OK");
+        }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
-using MerchandiseService.Infrastructure.StartupFilters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
@@ -24,7 +23,7 @@ namespace MerchandiseService.Infrastructure.Middlewares
                 await _next(context);
                 return;
             }
-            
+
             var response = context.Response;
             Stream originalBody = response.Body;
             await using var responseBodyReplacement = new MemoryStream();
