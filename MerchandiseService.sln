@@ -20,6 +20,10 @@ ProjectSection(SolutionItems) = preProject
 	.dockerignore = .dockerignore
 EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchandiseService.HttpModels", "src\MerchandiseService.HttpModels\MerchandiseService.HttpModels.csproj", "{6425D4E1-A276-4342-A67C-0BE0D3FBE0C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchandiseService.HttpClients", "src\MerchandiseService.HttpClients\MerchandiseService.HttpClients.csproj", "{59DFA796-11E8-4186-839C-B4AAE430BABF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,8 +34,18 @@ Global
 		{A76983BF-B74C-4C47-8BD5-032D37C0CB9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A76983BF-B74C-4C47-8BD5-032D37C0CB9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A76983BF-B74C-4C47-8BD5-032D37C0CB9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6425D4E1-A276-4342-A67C-0BE0D3FBE0C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6425D4E1-A276-4342-A67C-0BE0D3FBE0C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6425D4E1-A276-4342-A67C-0BE0D3FBE0C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6425D4E1-A276-4342-A67C-0BE0D3FBE0C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59DFA796-11E8-4186-839C-B4AAE430BABF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59DFA796-11E8-4186-839C-B4AAE430BABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59DFA796-11E8-4186-839C-B4AAE430BABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59DFA796-11E8-4186-839C-B4AAE430BABF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A76983BF-B74C-4C47-8BD5-032D37C0CB9C} = {BBDDDB7B-CBD6-4375-8BAC-A94599CB7D62}
+		{6425D4E1-A276-4342-A67C-0BE0D3FBE0C3} = {BBDDDB7B-CBD6-4375-8BAC-A94599CB7D62}
+		{59DFA796-11E8-4186-839C-B4AAE430BABF} = {BBDDDB7B-CBD6-4375-8BAC-A94599CB7D62}
 	EndGlobalSection
 EndGlobal
