@@ -17,7 +17,7 @@ namespace MerchandiseService.Infrastructure
             });
         }
 
-        public static IHostBuilder AddHttp(this IHostBuilder builder)
+        public static IHostBuilder AddHttpApi(this IHostBuilder builder)
         {
             builder.ConfigureServices(services =>
             {
