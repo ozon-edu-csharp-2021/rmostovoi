@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using MerchandiseService.HttpModels.Requests;
 using MerchandiseService.HttpModels.Responses;
 using Refit;
@@ -7,10 +8,10 @@ namespace MerchandiseService.HttpClients
 {
     public interface IMerchandiseServiceHttpClient
     {
-        [Get("/Merch/IssueMerch")]
-        Task<IssueMerchResponse> IssueMerch(IssueMerchModel model);
+        [Post("/Merch/IssueMerch")]
+        Task<IssueMerchResponse> IssueMerch(IssueMerchModel model, CancellationToken token);
 
-        [Get("/Merch/GetMerchInfo")]
-        Task<MerchInfoResponse> GetMerchInfo(MerchInfoModel model);
+        [Post("/Merch/GetMerchInfo")]
+        Task<MerchInfoResponse> GetMerchInfo(MerchInfoModel model, CancellationToken token);
     }
 }

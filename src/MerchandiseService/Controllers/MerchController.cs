@@ -1,4 +1,5 @@
-﻿using MerchandiseService.HttpModels.Requests;
+﻿using System.Threading;
+using MerchandiseService.HttpModels.Requests;
 using MerchandiseService.HttpModels.Responses;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,14 +9,14 @@ namespace MerchandiseService.Controllers
     [Route("[controller]/[action]")]
     public class MerchController : ControllerBase
     {
-        [HttpGet]
-        public ActionResult<IssueMerchResponse> IssueMerch(IssueMerchModel model)
+        [HttpPost]
+        public ActionResult<IssueMerchResponse> IssueMerch([FromBody] IssueMerchModel model, CancellationToken token)
         {
             return new IssueMerchResponse();
         }
 
-        [HttpGet]
-        public ActionResult<MerchInfoResponse> GetMerchInfo(MerchInfoModel model)
+        [HttpPost]
+        public ActionResult<MerchInfoResponse> GetMerchInfo([FromBody] MerchInfoModel model, CancellationToken token)
         {
             return new MerchInfoResponse();
         }
