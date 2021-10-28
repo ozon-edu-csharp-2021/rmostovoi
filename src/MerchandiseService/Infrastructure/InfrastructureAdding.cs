@@ -1,4 +1,5 @@
 ﻿using MerchandiseService.Infrastructure.HttpFilters;
+using MerchandiseService.Infrastructure.Interceptors;
 using MerchandiseService.Infrastructure.StartupFilters;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +23,16 @@ namespace MerchandiseService.Infrastructure
             builder.ConfigureServices(services =>
             {
                 services.AddControllers(options => { options.Filters.Add<GlobalExceptionFilter>(); });
+            });
+
+            return builder;
+        }
+
+        public static IHostBuilder AddGrpcApi(this IHostBuilder builder)
+        {
+            builder.ConfigureServices(services =>
+            {
+                services.AddGrpc(options => options.Interceptors.Add<LoggingInterceptor>());
             });
 
             return builder;

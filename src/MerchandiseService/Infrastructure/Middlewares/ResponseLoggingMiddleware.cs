@@ -18,7 +18,8 @@ namespace MerchandiseService.Infrastructure.Middlewares
 
         public async Task InvokeAsync(HttpContext context)
         {
-            if (context.Request.Path.StartsWithSegments("/swagger"))
+            if (context.Request.Path.StartsWithSegments("/swagger")
+                || context.Request.ContentType == "application/grpc")
             {
                 await _next(context);
                 return;

@@ -14,9 +14,11 @@ namespace MerchandiseService
         public static IHostBuilder CreateHostBuilder(string[] args)
         {
             return Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); })
-                .AddInfrastructure()
-                .AddHttpApi();
+                    .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); })
+                    .AddInfrastructure()
+                    .AddHttpApi()
+                    .AddGrpcApi()
+                ;
         }
     }
 }

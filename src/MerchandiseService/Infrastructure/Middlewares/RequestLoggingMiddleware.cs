@@ -27,6 +27,7 @@ namespace MerchandiseService.Infrastructure.Middlewares
         private async Task TryLogRequest(HttpRequest request)
         {
             if (request.Path.StartsWithSegments("/swagger")) return;
+            if (request.ContentType == "application/grpc") return;
             try
             {
                 LogRequestInfo(request);

@@ -1,3 +1,6 @@
+using MerchandiseService.GrpcServices;
+using MerchandiseService.Services;
+using MerchandiseService.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -14,16 +17,20 @@ namespace MerchandiseService
             _configuration = configuration;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(ModelsMapper.Instance);
+            services.AddScoped<IMerchService, MerchService>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseRouting();
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapGrpcService<MerchApiGrpcService>();
+                endpoints.MapControllers();
+            });
         }
     }
 }
