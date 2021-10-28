@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using MerchandiseService.HttpModels.Requests;
 using MerchandiseService.HttpModels.Responses;
-using MerchandiseService.Services;
+using MerchandiseService.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MerchandiseService.Controllers
@@ -10,9 +10,9 @@ namespace MerchandiseService.Controllers
     [Route("[controller]/[action]")]
     public class MerchController : ControllerBase
     {
-        private readonly MerchService _merchService;
+        private readonly IMerchService _merchService;
 
-        public MerchController(MerchService merchService)
+        public MerchController(IMerchService merchService)
         {
             _merchService = merchService;
         }
