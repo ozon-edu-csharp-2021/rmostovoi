@@ -26,7 +26,7 @@ namespace MerchandiseService.Controllers
         [HttpPost]
         public ActionResult<MerchInfoResponse> GetMerchInfo([FromBody] MerchInfoModel model, CancellationToken token)
         {
-            return new MerchInfoResponse();
+            return _merchService.GetMerchInfo(model, token);
         }
     }
 }
