@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using Grpc.Core;
 using MerchandiseService.HttpModels.Requests;
 using MerchandiseService.HttpModels.Responses;
 using MerchandiseService.Services.Interfaces;

@@ -9,9 +9,9 @@ namespace MerchandiseService.GrpcServices
     public class MerchApiGrpcService : MerchApiGrpc.MerchApiGrpcBase
     {
         private readonly IMerchService _merchService;
-        private readonly ModelsMapperService _modelsMapper;
+        private readonly IModelsMapperService _modelsMapper;
 
-        public MerchApiGrpcService(IMerchService merchService, ModelsMapperService modelsMapper)
+        public MerchApiGrpcService(IMerchService merchService, IModelsMapperService modelsMapper)
         {
             _merchService = merchService;
             _modelsMapper = modelsMapper;
