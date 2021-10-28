@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Grpc.Core;
 using MerchandiseService.Grpc;
+using MerchandiseService.Services;
 using MerchandiseService.Services.Interfaces;
 
 namespace MerchandiseService.GrpcServices
@@ -8,9 +9,9 @@ namespace MerchandiseService.GrpcServices
     public class MerchApiGrpcService : MerchApiGrpc.MerchApiGrpcBase
     {
         private readonly IMerchService _merchService;
-        private readonly ModelsMapper _modelsMapper;
+        private readonly ModelsMapperService _modelsMapper;
 
-        public MerchApiGrpcService(IMerchService merchService, ModelsMapper modelsMapper)
+        public MerchApiGrpcService(IMerchService merchService, ModelsMapperService modelsMapper)
         {
             _merchService = merchService;
             _modelsMapper = modelsMapper;

@@ -6,18 +6,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="CSharpCourse.Core.Lib" Version="1.4.0"/>
-        <PackageReference Include="Grpc.AspNetCore" Version="2.40.0"/>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3"/>
+        <PackageReference Include="CSharpCourse.Core.Lib" Version="1.4.0" />
+        <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Infrastructure\Extensions"/>
+        <Folder Include="Infrastructure\Extensions" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\MerchandiseService.Grpc\MerchandiseService.Grpc.csproj"/>
-        <ProjectReference Include="..\MerchandiseService.HttpModels\MerchandiseService.HttpModels.csproj"/>
+        <ProjectReference Include="..\MerchandiseService.Grpc\MerchandiseService.Grpc.csproj" />
+        <ProjectReference Include="..\MerchandiseService.HttpModels\MerchandiseService.HttpModels.csproj" />
     </ItemGroup>
 
 </Project>

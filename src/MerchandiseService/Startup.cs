@@ -19,7 +19,7 @@ namespace MerchandiseService
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(ModelsMapper.Instance);
+            services.AddSingleton<IModelsMapperService, ModelsMapperService>();
             services.AddScoped<IMerchService, MerchService>();
         }
 
