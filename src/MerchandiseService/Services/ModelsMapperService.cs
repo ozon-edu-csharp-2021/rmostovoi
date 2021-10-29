@@ -1,29 +1,30 @@
 ﻿using MerchandiseService.Grpc;
-using MerchandiseService.HttpModels.Requests;
+using MerchandiseService.HttpModels.Requests.Merch.V1;
+using MerchandiseService.HttpModels.Responses.Merch.V1;
 using MerchandiseService.Services.Interfaces;
 
 namespace MerchandiseService.Services
 {
     public class ModelsMapperService : IModelsMapperService
     {
-        public MerchInfoResponse Map(HttpModels.Responses.MerchInfoResponse response)
+        public MerchInfoResponse Map(V1MerchInfoResponse response)
         {
             return new MerchInfoResponse();
         }
 
-        public IssueMerchResponse Map(HttpModels.Responses.IssueMerchResponse response)
+        public IssueMerchResponse Map(V1IssueMerchResponse response)
         {
             return new IssueMerchResponse();
         }
 
-        public MerchInfoModel Map(MerchInfoRequest model)
+        public V1MerchInfoRequest Map(MerchInfoRequest model)
         {
-            return new MerchInfoModel();
+            return new V1MerchInfoRequest();
         }
 
-        public IssueMerchModel Map(IssueMerchRequest model)
+        public V1IssueMerchRequest Map(IssueMerchRequest model)
         {
-            return new IssueMerchModel();
+            return new V1IssueMerchRequest();
         }
     }
 }

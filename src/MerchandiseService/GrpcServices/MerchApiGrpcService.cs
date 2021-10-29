@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Grpc.Core;
 using MerchandiseService.Grpc;
-using MerchandiseService.Services;
 using MerchandiseService.Services.Interfaces;
 
 namespace MerchandiseService.GrpcServices

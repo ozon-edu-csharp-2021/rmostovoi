@@ -1,13 +1,13 @@
 ﻿using System.Threading;
-using MerchandiseService.HttpModels.Requests;
-using MerchandiseService.HttpModels.Responses;
+using MerchandiseService.HttpModels.Requests.Merch.V1;
+using MerchandiseService.HttpModels.Responses.Merch.V1;
 using MerchandiseService.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MerchandiseService.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("v1/merch")]
     public class MerchController : ControllerBase
     {
         private readonly IMerchService _merchService;
@@ -17,14 +17,16 @@ namespace MerchandiseService.Controllers
             _merchService = merchService;
         }
 
-        [HttpPost]
-        public ActionResult<IssueMerchResponse> IssueMerch([FromBody] IssueMerchModel model, CancellationToken token)
+        [HttpPost("issue")]
+        public ActionResult<V1IssueMerchResponse> IssueMerch([FromBody] V1IssueMerchRequest model,
+            CancellationToken token)
         {
             return _merchService.IssueMerch(model, token);
         }
 
-        [HttpPost]
-        public ActionResult<MerchInfoResponse> GetMerchInfo([FromBody] MerchInfoModel model, CancellationToken token)
+        [HttpPost("getinfo")]
+        public ActionResult<V1MerchInfoResponse> GetMerchInfo([FromBody] V1MerchInfoRequest model,
+            CancellationToken token)
         {
             return _merchService.GetMerchInfo(model, token);
         }

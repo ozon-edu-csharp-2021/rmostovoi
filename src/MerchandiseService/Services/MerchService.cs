@@ -1,21 +1,20 @@
 ﻿using System.Threading;
-using Grpc.Core;
-using MerchandiseService.HttpModels.Requests;
-using MerchandiseService.HttpModels.Responses;
+using MerchandiseService.HttpModels.Requests.Merch.V1;
+using MerchandiseService.HttpModels.Responses.Merch.V1;
 using MerchandiseService.Services.Interfaces;
 
 namespace MerchandiseService.Services
 {
     public class MerchService : IMerchService
     {
-        public IssueMerchResponse IssueMerch(IssueMerchModel model, CancellationToken token)
+        public V1IssueMerchResponse IssueMerch(V1IssueMerchRequest model, CancellationToken token)
         {
-            return new IssueMerchResponse();
+            return new V1IssueMerchResponse();
         }
 
-        public MerchInfoResponse GetMerchInfo(MerchInfoModel model, CancellationToken token)
+        public V1MerchInfoResponse GetMerchInfo(V1MerchInfoRequest model, CancellationToken token)
         {
-            return new MerchInfoResponse();
+            return new V1MerchInfoResponse();
         }
     }
 }
