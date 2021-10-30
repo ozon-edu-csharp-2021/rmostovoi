@@ -26,17 +26,24 @@ namespace MerchandiseService.Infrastructure.Middlewares
 
         private async Task TryLogRequest(HttpRequest request)
         {
-            if (request.Path.StartsWithSegments("/swagger")) return;
-            if (request.ContentType == "application/grpc") return;
+            var isLogged = false;
             try
             {
+                if (request.Path.StartsWithSegments("/swagger")) return;
+                if (request.ContentType == "application/grpc") return;
+                
                 LogRequestInfo(request);
                 LogRequestHeaders(request);
                 var text = await ReadRequestBodyAsText(request);
                 if (text is not null)
+                {
+                    isLogged = true;
                     _logger.LogInformation("[Request Body]: {RequestBody}", text);
+                }
                 else
+                {
                     _logger.LogInformation("Request is empty");
+                }
             }
             catch (Exception e)
             {
@@ -44,7 +51,10 @@ namespace MerchandiseService.Infrastructure.Middlewares
             }
             finally
             {
-                if (request.ContentLength > 0) request.Body.Seek(0, SeekOrigin.Begin);
+                if (isLogged)
+                {
+                    request.Body.Seek(0, SeekOrigin.Begin);
+                }
             }
         }
 

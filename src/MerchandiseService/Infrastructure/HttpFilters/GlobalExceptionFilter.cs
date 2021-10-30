@@ -8,8 +8,6 @@ namespace MerchandiseService.Infrastructure.HttpFilters
     {
         public override void OnException(ExceptionContext context)
         {
-            base.OnException(context);
-
             var resultObject = new
             {
                 ExceptionType = context.Exception.GetType().FullName,

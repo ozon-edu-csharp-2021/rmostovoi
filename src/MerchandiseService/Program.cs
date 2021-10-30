@@ -16,8 +16,6 @@ namespace MerchandiseService
             return Host.CreateDefaultBuilder(args)
                     .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); })
                     .AddInfrastructure()
-                    .AddHttpApi()
-                    .AddGrpcApi()
                 ;
         }
     }

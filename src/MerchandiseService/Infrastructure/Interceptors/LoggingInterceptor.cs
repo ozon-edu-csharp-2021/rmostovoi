@@ -19,6 +19,8 @@ namespace MerchandiseService.Infrastructure.Interceptors
             TRequest request,
             ServerCallContext context,
             UnaryServerMethod<TRequest, TResponse> continuation)
+            where TRequest : class
+            where TResponse : class
         {
             TryLogRequest(request);
             var response = await base.UnaryServerHandler(request, context, continuation);
@@ -26,11 +28,11 @@ namespace MerchandiseService.Infrastructure.Interceptors
             return response;
         }
 
-        private void TryLogRequest<T>(T request)
+        private void TryLogRequest<T>(T request) where T : notnull
         {
             try
             {
-                var json = request?.ToString();
+                var json = request.ToString();
                 _logger.LogInformation("Grpc Request: {Request}", json);
             }
             catch (Exception e)
@@ -39,11 +41,11 @@ namespace MerchandiseService.Infrastructure.Interceptors
             }
         }
 
-        private void TryLogResponse<T>(T response)
+        private void TryLogResponse<T>(T response) where T : notnull
         {
             try
             {
-                var json = response?.ToString();
+                var json = response.ToString();
                 _logger.LogInformation("Grpc Response: {Response}", json);
             }
             catch (Exception e)

@@ -18,14 +18,14 @@ namespace MerchandiseService.Controllers
         }
 
         [HttpPost("issue")]
-        public ActionResult<V1IssueMerchResponse> IssueMerch([FromBody] V1IssueMerchRequest model,
+        public ActionResult<V1IssueMerchResponse> IssueMerch(V1IssueMerchRequest model,
             CancellationToken token)
         {
             return _merchService.IssueMerch(model, token);
         }
 
         [HttpPost("getinfo")]
-        public ActionResult<V1MerchInfoResponse> GetMerchInfo([FromBody] V1MerchInfoRequest model,
+        public ActionResult<V1MerchInfoResponse> GetMerchInfo(V1MerchInfoRequest model,
             CancellationToken token)
         {
             return _merchService.GetMerchInfo(model, token);

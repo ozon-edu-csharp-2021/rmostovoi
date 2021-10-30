@@ -11,11 +11,14 @@ namespace MerchandiseService.Infrastructure
     {
         public static IHostBuilder AddInfrastructure(this IHostBuilder builder)
         {
-            return builder.ConfigureServices(services =>
-            {
-                services.AddSingleton<IStartupFilter, TerminalStartupFilter>();
-                services.AddSwagger(false);
-            });
+            return builder
+                .AddHttpApi()
+                .AddGrpcApi()
+                .ConfigureServices(services =>
+                {
+                    services.AddSingleton<IStartupFilter, TerminalStartupFilter>();
+                    services.AddSwagger(false);
+                });
         }
 
         public static IHostBuilder AddHttpApi(this IHostBuilder builder)
