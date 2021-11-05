@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Threading;
@@ -18,14 +17,15 @@ namespace MerchandiseService.Application.Queries.GetIssuedMerchInfoAggregate
         private readonly IIssuedMerchRepository _issuedMerchRepository;
         private readonly IMerchItemRepository _merchItemRepository;
 
-        public GetIssuedMerchInfoHandler(IIssuedMerchRepository issuedMerchRepository, IMerchItemRepository merchItemRepository)
+        public GetIssuedMerchInfoHandler(IIssuedMerchRepository issuedMerchRepository,
+            IMerchItemRepository merchItemRepository)
         {
             _issuedMerchRepository = issuedMerchRepository;
             _merchItemRepository = merchItemRepository;
         }
 
         public async Task<GetIssuedMerchInfoResponse> Handle(
-            GetIssuedMerchInfoQuery request, 
+            GetIssuedMerchInfoQuery request,
             CancellationToken cancellationToken)
         {
             var employeeId = new EmployeeId(new Guid(request.EmployeeId));
@@ -33,7 +33,7 @@ namespace MerchandiseService.Application.Queries.GetIssuedMerchInfoAggregate
                 .ToListAsync(cancellationToken);
             var skus = issuedMerch.Select(it => it.Sku).Distinct();
             var items = await _merchItemRepository.GetManyBySkus(skus, cancellationToken)
-                .ToDictionaryAsync(it => it.Sku,  cancellationToken);
+                .ToDictionaryAsync(it => it.Sku, cancellationToken);
             var models = issuedMerch.Select(it => new IssuedMerchModel(it, items[it.Sku]))
                 .ToImmutableList();
             return new GetIssuedMerchInfoResponse(models);

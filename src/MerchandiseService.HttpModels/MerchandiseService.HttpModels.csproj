@@ -5,4 +5,17 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\MerchandiseService.Application\MerchandiseService.Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Responses\Merch\V1\V1IssuedMerchModel.cs">
+        <DependentUpon>V1GetIssuedMerchInfoResponse.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Responses\Merch\V1\V1IssueMerchResult.cs">
+        <DependentUpon>V1IssueMerchResponse.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>

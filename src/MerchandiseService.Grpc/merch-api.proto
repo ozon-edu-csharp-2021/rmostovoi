@@ -6,7 +6,7 @@ import "google/protobuf/timestamp.proto";
 
 service MerchApiGrpc {
     rpc IssueMerch (IssueMerchRequest) returns (IssueMerchResponse);
-    rpc GetMerchInfo (GetIssuedMerchInfoRequest) returns (GetIssuedMerchInfoResponse);
+    rpc GetIssuedMerchInfo (GetIssuedMerchInfoRequest) returns (GetIssuedMerchInfoResponse);
 }
 
 message IssueMerchRequest {

@@ -3,7 +3,6 @@ using System.Linq;
 using Google.Protobuf.WellKnownTypes;
 using MerchandiseService.Application.Commands.MerchItemAggregate;
 using MerchandiseService.Grpc;
-using MerchandiseService.HttpModels.Requests.Merch.V1;
 using MerchandiseService.HttpModels.Responses.Merch.V1;
 using MerchandiseService.Services.Interfaces;
 
@@ -11,19 +10,9 @@ namespace MerchandiseService.Services
 {
     public class ModelsMapperService : IModelsMapperService
     {
-        public IssueMerchResponse Map(V1IssueMerchResponse response)
-        {
-            return new IssueMerchResponse();
-        }
-
-        public V1IssueMerchRequest Map(IssueMerchRequest model)
-        {
-            return new V1IssueMerchRequest();
-        }
-
         public IssueMerchResponse MapToGrpc(IssueMerchItemCommandResult result)
         {
-            return new IssueMerchResponse()
+            return new IssueMerchResponse
             {
                 Result = result switch
                 {
@@ -39,7 +28,7 @@ namespace MerchandiseService.Services
             Application.Queries.GetIssuedMerchInfoAggregate.GetIssuedMerchInfoResponse response)
         {
             var getIssuedMerchInfoResponse = new GetIssuedMerchInfoResponse();
-            getIssuedMerchInfoResponse.Items.AddRange(response.Items.Select(it => new GetIssuedMerchInfoItem()
+            getIssuedMerchInfoResponse.Items.AddRange(response.Items.Select(it => new GetIssuedMerchInfoItem
             {
                 Sku = it.Sku,
                 Name = it.Name,
@@ -47,6 +36,26 @@ namespace MerchandiseService.Services
                 IssuedAt = it.IssuedAt.ToTimestamp()
             }));
             return getIssuedMerchInfoResponse;
+        }
+
+        public V1IssueMerchResponse MapToHttp(IssueMerchItemCommandResult result)
+        {
+            return new V1IssueMerchResponse(
+                result switch
+                {
+                    IssueMerchItemCommandResult.Issued => V1IssueMerchResult.Issued,
+                    IssueMerchItemCommandResult.Inquiried => V1IssueMerchResult.Inquiried,
+                    IssueMerchItemCommandResult.AlreadyIssued => V1IssueMerchResult.AlreadyIssued,
+                    _ => throw new ArgumentOutOfRangeException(nameof(result), result, null)
+                }
+            );
+        }
+
+        public V1GetIssuedMerchInfoResponse MapToHttp(
+            Application.Queries.GetIssuedMerchInfoAggregate.GetIssuedMerchInfoResponse response)
+        {
+            return new V1GetIssuedMerchInfoResponse(
+                response.Items.Select(it => new V1IssuedMerchModel(it.Sku, it.Name, it.Quantity, it.IssuedAt)));
         }
     }
 }

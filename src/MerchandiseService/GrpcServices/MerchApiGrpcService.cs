@@ -27,8 +27,8 @@ namespace MerchandiseService.GrpcServices
             return _modelsMapper.MapToGrpc(result);
         }
 
-        public override async Task<GetIssuedMerchInfoResponse> GetMerchInfo(
-            GetIssuedMerchInfoRequest request, 
+        public override async Task<GetIssuedMerchInfoResponse> GetIssuedMerchInfo(
+            GetIssuedMerchInfoRequest request,
             ServerCallContext context)
         {
             var query = new GetIssuedMerchInfoQuery(request.EmployeeId);

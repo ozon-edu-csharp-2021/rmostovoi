@@ -33,12 +33,12 @@ namespace MerchandiseService.Domain.AggregationModels.MerchItemAggregate
 
         public static Quantity operator +(Quantity a, Quantity b)
         {
-            return new(a.Value + b.Value);
+            return new Quantity(a.Value + b.Value);
         }
 
         public static Quantity operator -(Quantity a, Quantity b)
         {
-            return new(a.Value - b.Value);
+            return new Quantity(a.Value - b.Value);
         }
     }
 }

@@ -12,6 +12,6 @@ namespace MerchandiseService.HttpClients
         Task<V1IssueMerchResponse> IssueMerch(V1IssueMerchRequest model, CancellationToken token);
 
         [Post("v1/merch/getinfo")]
-        Task<V1MerchInfoResponse> GetMerchInfo(V1MerchInfoRequest model, CancellationToken token);
+        Task<V1GetIssuedMerchInfoResponse> GetMerchInfo(V1MerchInfoRequest model, CancellationToken token);
     }
 }

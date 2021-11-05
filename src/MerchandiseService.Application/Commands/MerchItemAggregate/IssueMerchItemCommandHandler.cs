@@ -38,25 +38,20 @@ namespace MerchandiseService.Application.Commands.MerchItemAggregate
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
             var sku = new Sku(request.Sku);
-            
+
             /*
              * Синхронизация для каждого мерча, чтобы обработка одного и того же Sku не проходила одновременно,
              * иначе могут быть ошибки с выдачей (выдано больше, чем в наличии)
              */
             using var locking = await AsyncLockMutexProducer<Sku>.Get(sku).LockAsync(cancellationToken);
-            
+
             var merchItem = await _merchItemRepository.FindAsync(sku, cancellationToken);
-            if (merchItem is null)
-            {
-                throw new AppException($"Not found merch with sku {sku}");
-            }
+            if (merchItem is null) throw new AppException($"Not found merch with sku {sku}");
+
             var employeeId = new EmployeeId(new Guid(request.EmployeeId));
 
             var issuedMerch = await _issuedMerchRepository.FindAsync(sku, employeeId, cancellationToken);
-            if (issuedMerch is not null)
-            {
-                return AlreadyIssued;
-            }
+            if (issuedMerch is not null) return AlreadyIssued;
             // TODO Проверяется наличие данного мерча на складе через запрос к stock-api,
             // stock-api будет готов к следующему ДЗ: https://route256.slack.com/archives/C02FF0SQF0U/p1635879494054600?thread_ts=1635602103.039100&cid=C02FF0SQF0U
             // пока считаем, что мерч есть в наличии.
@@ -79,7 +74,7 @@ namespace MerchandiseService.Application.Commands.MerchItemAggregate
         }
 
         private async Task AddMerchInquiry(
-            Sku sku, 
+            Sku sku,
             Quantity quantity,
             EmployeeId employeeId,
             CancellationToken cancellationToken)
@@ -102,8 +97,9 @@ namespace MerchandiseService.Application.Commands.MerchItemAggregate
                     sku,
                     quantity,
                     employeeId,
-                    _clock.GetCurrentTimeUtc()),
-                cancellationToken);
+                    _clock.GetCurrentTimeUtc()
+                ), cancellationToken
+            );
             await _issuedMerchRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
         }
 

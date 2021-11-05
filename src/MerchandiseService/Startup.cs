@@ -18,7 +18,6 @@ namespace MerchandiseService
         {
             services.AddSingleton<IModelsMapperService, ModelsMapperService>();
             services.AddSingleton<IClock, Clock>();
-            services.AddScoped<IMerchService, MerchService>();
             services.AddScoped<IMerchItemRepository, MerchItemRepositoryPg>();
             services.AddScoped<IIssuedMerchRepository, IssuedMerchRepositoryPg>();
             services.AddScoped<IMerchInquiryRepository, MerchInquiryRepositoryPg>();
