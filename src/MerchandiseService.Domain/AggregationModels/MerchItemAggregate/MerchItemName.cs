@@ -9,9 +9,6 @@ namespace MerchandiseService.Domain.AggregationModels.MerchItemAggregate
         {
         }
 
-        public override IEnumerable<string> GetValidationErrors()
-        {
-            return _noValidation;
-        }
+        public override IEnumerable<string> GetValidationErrors() => _noValidation;
     }
 }

@@ -9,7 +9,5 @@ namespace MerchandiseService.Domain.AggregationModels.MerchInquiryAggregate
     public interface IMerchInquiryRepository : IRepository<MerchInquiry>
     {
         IAsyncEnumerable<MerchInquiry> FindAllAsync(Sku sku, CancellationToken cancellationToken);
-
-        Task AddAsync(MerchInquiry merchInquiry);
     }
 }

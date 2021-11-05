@@ -80,11 +80,12 @@ namespace MerchandiseService.Application.Commands.MerchItemAggregate
             CancellationToken cancellationToken)
         {
             await _merchInquiryRepository.AddAsync(new MerchInquiry(
-                Guid.NewGuid(),
-                sku,
-                quantity,
-                employeeId,
-                _clock.GetCurrentTimeUtc())
+                    Guid.NewGuid(),
+                    sku,
+                    quantity,
+                    employeeId,
+                    _clock.GetCurrentTimeUtc()
+                ), cancellationToken
             );
             await _merchInquiryRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
         }
