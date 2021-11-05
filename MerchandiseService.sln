@@ -18,6 +18,7 @@ ProjectSection(SolutionItems) = preProject
 	.editorconfig = .editorconfig
 	Dockerfile = Dockerfile
 	.dockerignore = .dockerignore
+	MerchandiseServiceBoundedContext.drawio = MerchandiseServiceBoundedContext.drawio
 EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchandiseService.HttpModels", "src\MerchandiseService.HttpModels\MerchandiseService.HttpModels.csproj", "{6425D4E1-A276-4342-A67C-0BE0D3FBE0C3}"
@@ -25,6 +26,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchandiseService.HttpClients", "src\MerchandiseService.HttpClients\MerchandiseService.HttpClients.csproj", "{59DFA796-11E8-4186-839C-B4AAE430BABF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchandiseService.Grpc", "src\MerchandiseService.Grpc\MerchandiseService.Grpc.csproj", "{7BC93C40-BC2B-478E-B638-CFF63EB6ED38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchandiseService.Domain", "src\MerchandiseService.Domain\MerchandiseService.Domain.csproj", "{16F10273-1011-4C8A-AAE6-04B6DE06B9C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchandiseService.Application", "src\MerchandiseService.Application\MerchandiseService.Application.csproj", "{3E6424F1-90AF-43C2-89C5-674CA90F5A2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchandiseService.Domain.Tests", "tests\MerchandiseService.Domain.Tests\MerchandiseService.Domain.Tests.csproj", "{90462D16-DC7C-4F9C-91D3-642AADB6BF1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,11 +55,26 @@ Global
 		{7BC93C40-BC2B-478E-B638-CFF63EB6ED38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BC93C40-BC2B-478E-B638-CFF63EB6ED38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BC93C40-BC2B-478E-B638-CFF63EB6ED38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16F10273-1011-4C8A-AAE6-04B6DE06B9C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16F10273-1011-4C8A-AAE6-04B6DE06B9C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16F10273-1011-4C8A-AAE6-04B6DE06B9C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16F10273-1011-4C8A-AAE6-04B6DE06B9C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E6424F1-90AF-43C2-89C5-674CA90F5A2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E6424F1-90AF-43C2-89C5-674CA90F5A2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E6424F1-90AF-43C2-89C5-674CA90F5A2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E6424F1-90AF-43C2-89C5-674CA90F5A2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90462D16-DC7C-4F9C-91D3-642AADB6BF1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90462D16-DC7C-4F9C-91D3-642AADB6BF1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90462D16-DC7C-4F9C-91D3-642AADB6BF1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90462D16-DC7C-4F9C-91D3-642AADB6BF1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A76983BF-B74C-4C47-8BD5-032D37C0CB9C} = {BBDDDB7B-CBD6-4375-8BAC-A94599CB7D62}
 		{6425D4E1-A276-4342-A67C-0BE0D3FBE0C3} = {BBDDDB7B-CBD6-4375-8BAC-A94599CB7D62}
 		{59DFA796-11E8-4186-839C-B4AAE430BABF} = {BBDDDB7B-CBD6-4375-8BAC-A94599CB7D62}
 		{7BC93C40-BC2B-478E-B638-CFF63EB6ED38} = {BBDDDB7B-CBD6-4375-8BAC-A94599CB7D62}
+		{16F10273-1011-4C8A-AAE6-04B6DE06B9C3} = {BBDDDB7B-CBD6-4375-8BAC-A94599CB7D62}
+		{3E6424F1-90AF-43C2-89C5-674CA90F5A2D} = {BBDDDB7B-CBD6-4375-8BAC-A94599CB7D62}
+		{90462D16-DC7C-4F9C-91D3-642AADB6BF1A} = {025C9094-C6A5-438B-897B-0C0275CC941F}
 	EndGlobalSection
 EndGlobal

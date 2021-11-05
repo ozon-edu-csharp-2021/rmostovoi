@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <Nullable>enable</Nullable>
+        <WarningsAsErrors>Nullable</WarningsAsErrors>
     </PropertyGroup>
 
     <ItemGroup>
@@ -16,8 +17,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\MerchandiseService.Domain\MerchandiseService.Domain.csproj"/>
         <ProjectReference Include="..\MerchandiseService.Grpc\MerchandiseService.Grpc.csproj"/>
         <ProjectReference Include="..\MerchandiseService.HttpModels\MerchandiseService.HttpModels.csproj"/>
+        <ProjectReference Include="..\MerchandiseService.Application\MerchandiseService.Application.csproj"/>
     </ItemGroup>
 
 </Project>

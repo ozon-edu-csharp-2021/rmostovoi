@@ -1,4 +1,6 @@
-﻿using MerchandiseService.Infrastructure.HttpFilters;
+﻿using MediatR;
+using MerchandiseService.Application.Commands.MerchItemAggregate;
+using MerchandiseService.Infrastructure.HttpFilters;
 using MerchandiseService.Infrastructure.Interceptors;
 using MerchandiseService.Infrastructure.StartupFilters;
 using Microsoft.AspNetCore.Hosting;
@@ -17,6 +19,7 @@ namespace MerchandiseService.Infrastructure
                 .ConfigureServices(services =>
                 {
                     services.AddSingleton<IStartupFilter, TerminalStartupFilter>();
+                    services.AddMediatR(typeof(IssueMerchItemCommandHandler).Assembly);
                     services.AddSwagger(false);
                 });
         }
