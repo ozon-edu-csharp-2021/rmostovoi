@@ -57,7 +57,7 @@ namespace MerchandiseService.Application.Commands.MerchItemAggregate
             // пока считаем, что мерч есть в наличии.
 
             var issueQuantity = new Quantity(request.Quantity);
-            if (merchItem.CanIssue(issueQuantity))
+            if (merchItem.CanBeIssued(issueQuantity))
             {
                 merchItem = merchItem with { Quantity = merchItem.Quantity - issueQuantity };
                 await Task.WhenAll(

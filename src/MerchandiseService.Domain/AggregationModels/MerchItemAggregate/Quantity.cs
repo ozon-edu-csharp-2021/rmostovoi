@@ -21,24 +21,16 @@ namespace MerchandiseService.Domain.AggregationModels.MerchItemAggregate
             if (Value < 0) yield return "Quantity should be more or equal to 0";
         }
 
-        public static bool operator >(Quantity a, Quantity b)
-        {
-            return a.CompareTo(b) == 1;
-        }
+        public static bool operator >(Quantity a, Quantity b) => a.CompareTo(b) == 1;
 
-        public static bool operator <(Quantity a, Quantity b)
-        {
-            return a.CompareTo(b) == -1;
-        }
+        public static bool operator <(Quantity a, Quantity b) => a.CompareTo(b) == -1;
+        
+        public static bool operator >=(Quantity a, Quantity b) => a.CompareTo(b) is 1 or 0;
 
-        public static Quantity operator +(Quantity a, Quantity b)
-        {
-            return new Quantity(a.Value + b.Value);
-        }
+        public static bool operator <=(Quantity a, Quantity b) => a.CompareTo(b) is -1 or 0;
 
-        public static Quantity operator -(Quantity a, Quantity b)
-        {
-            return new Quantity(a.Value - b.Value);
-        }
+        public static Quantity operator +(Quantity a, Quantity b) => new(a.Value + b.Value);
+
+        public static Quantity operator -(Quantity a, Quantity b) => new(a.Value - b.Value);
     }
 }

@@ -11,9 +11,9 @@ namespace MerchandiseService.Domain.AggregationModels.MerchItemAggregate
         ClothingSize? ClothingSize
     ) : Entity
     {
-        public bool CanIssue(Quantity inquiriedQuantity)
+        public bool CanBeIssued(Quantity inquiriedQuantity)
         {
-            return inquiriedQuantity < Quantity;
+            return inquiriedQuantity <= Quantity;
         }
     }
 }
