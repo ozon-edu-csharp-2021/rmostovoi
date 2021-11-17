@@ -31,7 +31,7 @@ namespace MerchandiseService.Infrastructure.Middlewares
             {
                 if (request.Path.StartsWithSegments("/swagger")) return;
                 if (request.ContentType == "application/grpc") return;
-                
+
                 LogRequestInfo(request);
                 LogRequestHeaders(request);
                 var text = await ReadRequestBodyAsText(request);
@@ -51,10 +51,7 @@ namespace MerchandiseService.Infrastructure.Middlewares
             }
             finally
             {
-                if (isLogged)
-                {
-                    request.Body.Seek(0, SeekOrigin.Begin);
-                }
+                if (isLogged) request.Body.Seek(0, SeekOrigin.Begin);
             }
         }
 

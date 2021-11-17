@@ -2,21 +2,37 @@ syntax = "proto3";
 option csharp_namespace = "MerchandiseService.Grpc";
 package MerchApi;
 
-import "google/protobuf/empty.proto";
-import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
 
 service MerchApiGrpc {
     rpc IssueMerch (IssueMerchRequest) returns (IssueMerchResponse);
-    rpc GetMerchInfo (MerchInfoRequest) returns (MerchInfoResponse);
+    rpc GetIssuedMerchInfo (GetIssuedMerchInfoRequest) returns (GetIssuedMerchInfoResponse);
 }
 
 message IssueMerchRequest {
+    int64 sku = 1;
+    int64 quantity = 2;
+    string employeeId = 3;
 }
 message IssueMerchResponse {
-    string id = 1;
+    IssueMerchItemResult result = 1;
 }
 
-message MerchInfoRequest {
+message GetIssuedMerchInfoRequest {
+    string employeeId = 1;
 }
-message MerchInfoResponse {
+message GetIssuedMerchInfoResponse {
+    repeated GetIssuedMerchInfoItem items = 1;
+}
+message GetIssuedMerchInfoItem {
+    int64 sku = 1;
+    string name = 2;
+    int64 quantity = 3;
+    google.protobuf.Timestamp issuedAt = 4;
+}
+
+enum IssueMerchItemResult {
+    ISSUED = 0;
+    INQUIRIED = 1;
+    ALREADY_ISSUED = 2;
 }

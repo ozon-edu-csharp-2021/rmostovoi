@@ -1,26 +1,26 @@
+using MerchandiseService.Application;
+using MerchandiseService.Application.Repositories;
+using MerchandiseService.Domain.AggregationModels.IssuedMerchAggregate;
+using MerchandiseService.Domain.AggregationModels.MerchInquiryAggregate;
+using MerchandiseService.Domain.AggregationModels.MerchItemAggregate;
 using MerchandiseService.GrpcServices;
 using MerchandiseService.Services;
 using MerchandiseService.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace MerchandiseService
 {
     public class Startup
     {
-        private readonly IConfiguration _configuration;
-
-        public Startup(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
-
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IModelsMapperService, ModelsMapperService>();
-            services.AddScoped<IMerchService, MerchService>();
+            services.AddSingleton<IClock, Clock>();
+            services.AddScoped<IMerchItemRepository, MerchItemRepositoryPg>();
+            services.AddScoped<IIssuedMerchRepository, IssuedMerchRepositoryPg>();
+            services.AddScoped<IMerchInquiryRepository, MerchInquiryRepositoryPg>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
